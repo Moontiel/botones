@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header, footer {
+    text-align: center;
+    background-color: crimson;
+    color: #fff;
+    height: 160px;
+}
+
+/*
+    section_name: contenedor definido para implementar
+    margin o padding con el fin de separar las secciones
+    entre si
+*/
+.section_name {
+    padding: 150px 0;
+
+    /*
+        container_name: contenedor definido para manejar
+        el responsive implementando width
+    */
+    .container_name {
+        margin: 0 auto;
+
+        /*
+            @query de 999px <=== : definimos un width
+            responsive en esta medida
+        */
+        @media (max-width: 999px) {
+            width: 70%;
+        }
+
+        /*
+            @query de 1000px ===> : definimos un width
+            responsive en esta medida
+        */
+        @media (min-width: 1000px) {
+            width: 90%;
+        }
+
+        /*
+            content_flexbox: contenedor definido para
+            implementar flebox si se requiere
+        */
+        .content_flexbox {
+            /*
+                box_btn: contiene elementos exclusivos
+                para esta caja
+            */
+            .box_btn {
+                text-align: center;
+                
+                /*
+                    tag-a: para convertir un enlace en un
+                    boton, es importante definirle un 
+                    display: inline-flex mas las propiedades
+                    width, justify-content, height, 
+                    align-items que dan tamaño al boton y 
+                    centran su contenido
+                */
+                a {
+                    text-decoration: none;
+                    background-color: deeppink;
+                    color: #fff;
+                    display: inline-flex;
+                    width: 160px;
+                    justify-content: space-around;
+                    height: 50px;
+                    align-items: center;
+                    border-radius: 5px;
+                    box-shadow: 0 4px 12px 0 rgba(0,0,0, .3);
+                    transition: background-color .3 ease;
+
+                    /*
+                        cuando hacemos :hover sobre el boton
+                        modificamos su background-color
+                    */
+                    &:hover {
+                        background-color: darkmagenta;
+                    }
+
+                    /*
+                        tag-svg: definimos color y tamaño para el icono
+                    */
+                    svg {
+                        fill: #fff;
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
+    }
+}

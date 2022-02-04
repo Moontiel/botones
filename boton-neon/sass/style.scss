@@ -1,0 +1,195 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header, footer {
+    text-align: center;
+    // background-color: cadetblue;
+    color: #fff;
+    height: 160px;
+}
+
+/*
+    section_name: contenedor definido para implementar
+    margin o padding con el fin de separar las secciones
+    entre si
+*/
+.section_name {
+    padding: 150px 0;
+    background: #1a0321;
+
+    /*
+        container_name: contenedor definido para manejar
+        el responsive implementando width
+    */
+    .container_name {
+        margin: 0 auto;
+
+        /*
+            @query de 699px <=== : definimos un width
+            responsive en esta medida
+        */
+        @media (max-width: 699px) {
+            width: 90%;
+        }
+
+        /*
+            @query de 700px ===> : definimos un width
+            responsive en esta medida
+        */
+        @media (min-width: 700px) {
+            width: 70%;
+        }
+
+        /*
+            content_flexbox: contenedor definido para
+            implementar flebox si se requiere
+        */
+        .content_flexbox {
+
+            /*
+                box_btn: contiene elementos exclusivos
+                para esta caja
+            */
+            .box_btn {
+                text-align: center;
+
+                /*
+                    tag-a: para convertir un enlace en un
+                    boton, es importante definirle un 
+                    display: inline-flex mas las propiedades
+                    width, justify-content, height, 
+                    align-items que dan tamaño al boton y 
+                    centran su contenido
+
+                    para el efecto bordes es importante definir 
+                    position: relative. este nos ayuda a posicionar 
+                    el borde neon animado sobre el contorno del boton
+                */
+                a {
+                    text-decoration: none;
+                    position: relative;
+                    display: inline-flex;
+                    width: 250px;
+                    justify-content: center;
+                    height: 50px;
+                    align-items: center;
+                    color: #fff;
+                    font-size: 18px;
+                    letter-spacing: 1px;
+                    overflow: hidden;
+                    transition: 0.2s;
+
+                    /*
+                        cuando hacemos :hover sobre el boton
+                        añadimo background-color, sombra y muy 
+                        importante la propiedad transition-delay
+                        que retarda la aparicion de los efectos
+
+                    */
+                    &:hover {
+                        background: #a945c7;
+                        box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #a945c7;
+                        transition-delay: 1s;
+                    }
+
+                    /*
+                        cuando hacemos :hover sobre el boton selecionamos a
+                        border-top y modificamos la propiedad left de -100% a 100%
+                    */
+                    &:hover .border_top {
+                        left: 100%;
+                        transition: 1s;
+                    }
+
+                    /*
+                        cuando hacemos :hover sobre el boton selecionamos a
+                        border-right y modificamos la propiedad top de -100% a 100%
+                    */
+                    &:hover .border_right {
+                        top: 100%;
+                        transition: 1s;
+                        transition-delay: 0.25s;
+                    }
+
+                    /*
+                        cuando hacemos :hover sobre el boton selecionamos a
+                        border-bottom y modificamos la propiedad right de 100% a -100%
+                    */
+                    &:hover .border_bottom {
+                        right: 100%;
+                        transition: 1s;
+                        transition-delay: 0.5s;
+                    }
+
+                    /*
+                        cuando hacemos :hover sobre el boton selecionamos a
+                        border-left y modificamos la propiedad right de -100% a 100%
+                    */
+                    &:hover .border_left {
+                        bottom: 100%;
+                        transition: 1s;
+                        transition-delay: 0.75s;
+                    }
+
+                    /*
+                        tag-span: definimos position: absolute para posicionar
+                        los bordes neon sobre el boton, tambien definir
+                        display: block para pasar el elemento a bloque y que
+                        este pueda cubrir el boton que debe tener definido 
+                        position: relative
+                    */
+                    span {
+                        position: absolute;
+                        display: block;
+                    }
+
+                    /*
+                        bordes: las propiedades width y height nos permiten
+                        definir el tamaño y grosor el alto y grosor de cada
+                        borde dependiendo del lado de este. las propiedades
+                        top, right, bottom y left son las encargadas de definir
+                        la ubicacion de estos y su desplazamiento.
+                        recordemos que deben tener previamente definido
+                        position: absolute
+                    */
+                    .border_top {
+                        top: 0;
+                        left: -100%;
+                        width: 100%;
+                        height: 2px;
+                        background: linear-gradient(90deg, transparent,#a945c7);
+                    }
+
+                    .border_right {
+                        top: -100%;
+                        right: 0;
+                        width: 2px;
+                        height: 100%;
+                        background: linear-gradient(180deg,transparent,#a945c7);
+                    }
+
+                    .border_bottom {
+                        bottom: 0;
+                        right: -100%;
+                        width: 100%;
+                        height: 2px;
+                        background: linear-gradient(270deg, transparent,#a945c7);
+                    }
+
+                    .border_left {
+                        bottom: -100%;
+                        left: 0;
+                        width: 2px;
+                        height: 100%;
+                        background: linear-gradient(360deg,transparent,#a945c7);
+                    }
+                 }
+            }
+        }
+    }
+}
+
+ 

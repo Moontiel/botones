@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*
+    variables usadas por varias etiquetas
+*/
+$widthBoton: 160px;
+$heightBoton: 50px;
+
+header, footer {
+    text-align: center;
+    background-color: crimson;
+    color: #fff;
+    height: 160px;
+}
+
+/*
+    section_name: contenedor definido para implementar
+    margin o padding con el fin de separar las secciones
+    entre si
+*/
+.section_name {
+    padding: 150px 0;
+
+    /*
+        container_name: contenedor definido para manejar
+        el responsive implementando width
+    */
+    .container_name {
+        margin: 0 auto;
+
+        /*
+            @query de 999px <=== : definimos un width
+            responsive en esta medida
+        */
+        @media (max-width: 999px) {
+            width: 70%;
+        }
+
+        /*
+            @query de 1000px ===> : definimos un width
+            responsive en esta medida
+        */
+        @media (min-width: 1000px) {
+            width: 60%;
+        }
+
+        /*
+            content_flexbox: contenedor definido para
+            implementar flebox si se requiere
+        */
+        .content_flexbox {
+            /*
+                box_btn: contiene elementos exclusivos
+                para esta caja
+            */
+            .box_btn {
+                text-align: center;
+
+                /*
+                    tag-a: para convertir un enlace en un
+                    boton, es importante definirle un 
+                    display: inline-flex mas las propiedades
+                    width, justify-content, height, 
+                    align-items que dan tamaño al boton y 
+                    centran su contenido
+
+                    para el efecto cruzado es importante definir position 
+                    relative, z-index y overflow: hidden que oculta la mascara
+                    creada con la pseudo clase :before
+                */
+                a {
+                    text-decoration: none;
+                    position: relative;
+                    z-index: 3;
+                    background-color: deeppink;
+                    color: #fff;
+                    display: inline-flex;
+                    width: $widthBoton;
+                    justify-content: center;
+                    height: $heightBoton;
+                    align-items: center;
+                    border-radius: 5px;
+                    box-shadow: 0 4px 12px 0 rgba(0,0,0, .3);
+                    overflow: hidden;
+                    transition: overflow .3 ease;
+
+                    /*
+                        :before: definimos para la tag-a una pseudo clase con 
+                        la cual creamos una mascara. es importante definirle 
+                        position: absolute para ponerla sobre el boton, 
+                        las propiedades left, top y z-index nos ayudan a 
+                        desplazarla fuera de este. por ultimo debe tener el 
+                        mismo widht y height del boton para no generar desmaquetados.
+                        a la propiedad border le definimos el mismo height del boton 
+                        y finalmente es importantee hacer un cal() de -100% menos la
+                        altura del boton 
+                    */
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        left: calc(-100% - #{$heightBoton});
+                        top: 0;
+                        z-index: -1;
+                        width: $widthBoton;
+                        border-right: $heightBoton solid transparent;
+                        border-bottom: $heightBoton solid darkorange;
+                        transition: left .3s ease-in-out;
+                    }
+
+                    /*
+                        cuando hacemos :hover sobre el boton seleccionamos
+                        la pseudo clase :before y modificamos el left a 0 para
+                        que la mascara cubra el boton y overflow: visible para 
+                        que sea visible
+                    */
+                    &:hover:before {
+                        left: 0;
+                        overflow: visible;
+                    }
+                }
+            }
+        }
+    }
+}

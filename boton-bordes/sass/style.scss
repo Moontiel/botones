@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*
+    variables usadas por varias etiquetas
+*/
+$widthBoton: 160px;
+$heightBoton: 50px;
+
+header, footer {
+    text-align: center;
+    background-color: crimson;
+    color: #fff;
+    height: 160px;
+}
+
+/*
+    section_name: contenedor definido para implementar
+    margin o padding con el fin de separar las secciones
+    entre si
+*/
+.section_name {
+    padding: 150px 0;
+
+    /*
+        container_name: contenedor definido para manejar
+        el responsive implementando width
+    */
+    .container_name {
+        margin: 0 auto;
+
+        /*
+            @query de 999px <=== : definimos un width
+            responsive en esta medida
+        */
+        @media (max-width: 999px) {
+            width: 70%;
+        }
+
+        /*
+            @query de 1000px ===> : definimos un width
+            responsive en esta medida
+        */
+        @media (min-width: 1000px) {
+            width: 90%;
+        }
+
+        /*
+            content_flexbox: contenedor definido para
+            implementar flebox si se requiere
+        */
+        .content_flexbox {
+            /*
+                box_btn: contiene elementos exclusivos
+                para esta caja
+            */
+            .box_btn {
+                text-align: center;
+
+                /*
+                    tag-a: para convertir un enlace en un
+                    boton, es importante definirle un 
+                    display: inline-flex mas las propiedades
+                    width, justify-content, height, 
+                    align-items que dan tamaño al boton y 
+                    centran su contenido
+
+                    para el efecto bordes es importante definir 
+                    position: relative. este nos ayuda a posicionar 
+                    el borde animado sobre el contorno del boton
+                */
+                a {
+                    text-decoration: none;
+                    position: relative;
+                    color: #333;
+                    display: inline-flex;
+                    width: $widthBoton;
+                    justify-content: center;
+                    height: $heightBoton;
+                    align-items: center;
+                    border-radius: 5px;
+                    transition: box-shadow .6s ease-in-out;
+                    
+                    /*
+                        cuando hacemos :hover sobre el boton
+                        añadimo sombra
+                    */
+                    &:hover {
+                        box-shadow: 0 3px 12px 0 rgba(0,0,0, .3);
+                    }
+                    
+                    /*
+                        cuando hacemos :hover sobre el boton seleccionamos
+                        a la tag-rect y modificamos el stroke-dashoffset a 0 
+                        para que el borde aparezca y recorra el boton
+                    */
+                    &:hover rect {
+                        stroke-dashoffset: 0;
+                    }
+
+                    /*
+                        tag-svg: definimos position: absolute y sus propiedades
+                        top y left para posicionar el borde animado sobre el boton
+                        que debe tener relative finalmente definimos su
+                        width y height a 100%
+                    */
+                    svg {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        fill: none;
+                        width: 100%;
+                        height: 100%;
+    
+                        /*
+                            tag-rect: importante definir el width y 
+                            height a 100% 
+                            stroke = color del borde
+                            stroke-width = grosor del borde
+                            stroke-dasharray = largo del borde
+                            stroke-dashoffset = encargado de desaparecer el borde
+                        */
+                        rect {
+                            width: 100%;
+                            height: 100%;
+                            stroke: #333;
+                            stroke-width: 6px;
+                            stroke-dasharray: 1000;
+                            stroke-dashoffset: 1000;
+                            transition: all .6s ease;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
