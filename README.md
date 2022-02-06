@@ -1,9 +1,9 @@
 # DOCUMENTACION BOTONES
 
 
-Estos botones estan realizados con html y css donde aplicamos el pseudo elemento ::before para crear
+Estos botones estan hechos con html y css donde aplicamos el pseudo elemento ::before para crear
 mascaras que cubren los botones generando efectos en estos ademas de la propiedad ::hover que completa
-las acciones realzadas por estos.
+las acciones realizadas por estos.
 
 
 https://user-images.githubusercontent.com/98065715/152623925-c923cf13-9d56-4240-9f6e-6aada59a6fb1.mp4
